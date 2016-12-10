@@ -4,7 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
-const token = 'EAARNYV9EBfsBACP0tjXUfEZCrqdj9MBb6p8VDBvA1DalbJm0a1xqW5eFNcokh6SCci6eQij9GZAZBN37jylky9uxGHHKtZAc8P1q2MksyBJZCfGBdVXzZBZCC2lBvhNN20ZCAIuqbZA5kEi1DBSCZBpINjaWnNvARKiH4Lmk1pvf06igZDZD'
+const token = 'key'
 app.set('port', (process.env.PORT || 5000))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
   res.send('test test')
 })
 app.get('/webhook/', function (req, res) {
-  if (req.query['hub.verify_token'] === 'passbot') {
+  if (req.query['hub.verify_token'] === '') {
     res.send(req.query['hub.challenge'])
   }
   res.send('Error, wrong token')
@@ -30,8 +30,6 @@ app.post('/webhook/', function (req, res) {
       }
       sendTextMessage(sender, 'Text received, echo: ' + text.substring(0, 200))
     }
-      let text = text.splice(' ')
-      let cin = sendTextMessage(sender, parseInt(text[0]) + parseInt(text[1]))
     if (event.postback) {
       let text = JSON.stringify(event.postback)
       sendTextMessage(sender, 'Postback received: ' + text.substring(0, 200), token)
