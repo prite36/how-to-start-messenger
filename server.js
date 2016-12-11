@@ -45,8 +45,8 @@ app.post('/webhook/', function (req, res) {
     }
     if (event.postback) {
       let text = JSON.stringify(event.postback)
-      sendTextMessage(sender, 'Hello welcome to Weather')
-      sendTextMessage(sender, 'Enter Your namecity')
+      sendTextMessage(sender, 'Hello welcome to Weather', token)
+      sendTextMessage(sender, 'Enter Your namecity', token)
       continue
     }
   }
