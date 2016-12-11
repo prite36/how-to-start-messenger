@@ -4,7 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
-const token = 'EAAZApBxGEoFUBAOBeEceIFESGoOSzPv9rqTLgT3ZCl6NTkNJHYEPZBT8mIVmAL5LfWWy6ZCqiYZA9uftRpOaGDhl3dxAQiWDun8PS21Wv91dUHzOt99Ue8xLcPs52EtXk12bIyzKYZCyN8jcHfIGtBtZB2W80vGsVzCfpRdeq4ZANgZDZD'
+const token = 'EAAZApBxGEoFUBAGSNrvOlI5R5xbMNufulzmOkpCWRWZAWo4XBgFpgo0hown86HbFTfXxivlmZBVVvLA5rNB1HdXsR96QUawg2EshrKZCIi3pe8hs6VJwS0Cj3zgAPTo16O9Yz9IofYUGmTCbgDZBKHp92tE4lLJhCBb0TT1ePdgZDZD'
 app.set('port', (process.env.PORT || 5000))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -25,7 +25,7 @@ app.post('/webhook/', function (req, res) {
     if (event.message && event.message.text) {
       let text = event.message.text
       var location = event.message.text
-      var weatherEndpoint = 'http://api.openweathermap.org/data/2.5/weather?q=' +location+ '&units=metric&appid=ea5272e74853f242bc0efa9fef3dd9f3'
+      var weatherEndpoint = 'http://api.openweathermap.org/data/2.5/weather?q=' +location+ '&units=metric&appid=0dbe38b9e115ada0ec62580a7a34a185'
       request({
         url: weatherEndpoint,
         json: true
@@ -38,13 +38,14 @@ app.post('/webhook/', function (req, res) {
           sendTextMessage(sender, "There was an error.");
         }
       })
-
       if (text === 'Generic') {
         sendGenericMessage(sender)
         continue
       }
-      var text2 = text.split(' ')
-      sendTextMessage(sender, parseInt(text2[0]) + parseInt(text2[1]) )
+      // let textEcho = text.split(' ')
+      // sendTextMessage(sender, parseInt(textEcho[0]) + parseInt(textEcho[1]))
+         sendTextMessage(sender, 'Welcome to Weather')
+         sendTextMessage(sender, 'please enter your City')
     }
     if (event.postback) {
       let text = JSON.stringify(event.postback)
