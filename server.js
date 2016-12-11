@@ -42,14 +42,11 @@ app.post('/webhook/', function (req, res) {
         sendGenericMessage(sender)
         continue
       }
-      // let textEcho = text.split(' ')
-      // sendTextMessage(sender, parseInt(textEcho[0]) + parseInt(textEcho[1]))
-         sendTextMessage(sender, 'Welcome to Weather')
-         sendTextMessage(sender, 'please enter your City')
     }
     if (event.postback) {
       let text = JSON.stringify(event.postback)
-      sendTextMessage(sender, 'Postback received: ' + text.substring(0, 200), token)
+      sendTextMessage(sender, 'Hello welcome to Weather')
+      sendTextMessage(sender, 'Enter Your namecity')
       continue
     }
   }
