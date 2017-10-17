@@ -96,7 +96,8 @@ function sendGenericMessage (sender) {
           "type":"web_url",
           "url":"https://kmutnbeventadmin.firebaseapp.com/",
           "title":"View Item",
-          "webview_height_ratio": "tall"   
+          "webview_height_ratio": "tall",
+          'messenger_extensions': true
           }]
         }]
       }
