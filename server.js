@@ -25,7 +25,6 @@ app.post('/webhook/', function (req, res) {
     if (event.message && event.message.text) {
       let text = event.message.text
       request({
-        url: weatherEndpoint,
         json: true
       }, function(error, response, body) {
         try {
