@@ -29,7 +29,7 @@ app.post('/webhook/', function (req, res) {
       }, function(error, response, body) {
         try {
           var condition = body.main;
-          sendTextMessage('hello');
+          sendTextMessage(hello);
         } catch(err) {
           console.error('error caught', err);
           sendTextMessage(sender, "There was an error.");
@@ -79,16 +79,17 @@ function sendGenericMessage (sender) {
           'title': 'First card',
           'subtitle': 'Element #1 of an hscroll',
           'image_url': 'http://messengerdemo.parseapp.com/img/rift.png',
-          "buttons":[
-            {
-              "type":"web_url",
-              "url":"https://petersfancyapparel.com/criteria_selector",
-              "title":"Select Criteria",
-              "webview_height_ratio": "full",
-              "messenger_extensions": true,  
-              "fallback_url": "https://petersfancyapparel.com/fallback"
-            }
-          ]
+          'buttons': [{
+            'type': 'web_url',
+            'url': 'https://kmutnbeventadmin.firebaseapp.com/',
+            'title': 'web view',
+            'webview_height_ratio': 'compact',
+            'messenger_extensions': true
+          }, {
+            'type': 'postback',
+            'title': 'Postback',
+            'payload': 'Payload for first element in a generic bubble'
+          }]
         }, {
           'title': 'Second card',
           'subtitle': 'Element #2 of an hscroll',
