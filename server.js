@@ -72,7 +72,7 @@ function sendTextMessage (sender, text) {
 function sendGenericMessage (sender) {
   let messageData = {
     'attachment': {
-      'type': 'template',
+      'type': '<h1>gg</h1>',
       'payload': {
         'template_type': 'generic',
         'elements': [{
