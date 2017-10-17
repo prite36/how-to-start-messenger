@@ -1,9 +1,6 @@
-'use strict'
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-const axios = require('axios')
 const app = express()
 const token = 'EAAXEcK9g0skBAJposuJFuFuc8qGPMLpZA2C848sWZBwRFCfjjdvMRGNd9DSasHHVgdadjRBZCzYgrYDa1FxTVzlDZCSCHyBhHk13nasaVd2JN31vh5m1Kk9uVBXxJqD8m3o41yUuAmAL4d1vX7Dn5vQqJObFY78ZC1PjdNOBG2AZDZD'
 app.set('port', (process.env.PORT || 5000))
@@ -13,7 +10,7 @@ app.get('/', function (req, res) {
   res.send('test test')
 })
 app.get('/webhook/', function (req, res) {
-  if (req.query['hub.verify_token'] === 'koykoy') {
+  if (req.query['hub.verify_token'] === 'passpass') {
     res.send(req.query['hub.challenge'])
   }
   res.send('Error, wrong token')
@@ -29,11 +26,6 @@ app.post('/webhook/', function (req, res) {
         sendGenericMessage(sender)
         continue
       }
-      // sendTextMessage(sender, 'Text received, echo: ' + text.substring(0, 200))
-        axios.get('http://api.openweathermap.org/data/2.5/weather?q=' + text + '&APPID=7fee5476cbd1705fb181c28e20c473b7').then(function (res) {
-          console.log(res.data.main.temp)
-          sendTextMessage(sender, res.data.main.temp - 273)
-        })
     }
     if (event.postback) {
       let text = JSON.stringify(event.postback)
@@ -75,12 +67,11 @@ function sendGenericMessage (sender) {
           'image_url': 'http://messengerdemo.parseapp.com/img/rift.png',
           'buttons': [{
             'type': 'web_url',
-            'url': 'https://www.messenger.com',
-            'title': 'web url'
-          }, {
-            'type': 'postback',
-            'title': 'Postback',
-            'payload': 'Payload for first element in a generic bubble'
+            'url': 'https://kmutnbeventadmin.firebaseapp.com/',
+            'title': 'Select Criteria',
+            'webview_height_ratio': 'compact',
+            'messenger_extensions': true,
+            'fallback_url': 'https://kmutnbeventadmin.firebaseapp.com/fallback'
           }]
         }, {
           'title': 'Second card',
