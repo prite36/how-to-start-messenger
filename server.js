@@ -24,17 +24,6 @@ app.post('/webhook/', function (req, res) {
     let sender = event.sender.id
     if (event.message && event.message.text) {
       let text = event.message.text
-      request({
-        json: true
-      }, function(error, response, body) {
-        try {
-          var condition = body.main;
-          sendTextMessage('hello');
-        } catch(err) {
-          console.error('error caught', err);
-          sendTextMessage(sender, "There was an error.");
-        }
-      })
       if (text === 'Generic') {
         sendGenericMessage(sender)
         continue
