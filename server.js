@@ -92,10 +92,11 @@ function sendGenericMessage (sender) {
           'title': 'Second card',
           'subtitle': 'Element #2 of an hscroll',
           'image_url': 'http://messengerdemo.parseapp.com/img/gearvr.png',
-          'buttons': [{
-            'type': 'postback',
-            'title': 'Postback',
-            'payload': 'Payload for second element in a generic bubble'
+          'buttons':[{
+          "type":"web_url",
+          "url":"https://kmutnbeventadmin.firebaseapp.com/",
+          "title":"View Item",
+          "webview_height_ratio": "compact"
           }]
         }]
       }
