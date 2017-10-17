@@ -28,11 +28,11 @@ app.post('/webhook/', function (req, res) {
         json: true
       }, function(error, response, body) {
         try {
-          var condition = body.main;
-          sendTextMessage(hello);
+          var condition = body.main
+          sendTextMessage('hello')
         } catch(err) {
-          console.error('error caught', err);
-          sendTextMessage(sender, "There was an error.");
+          console.error('error caught', err)
+          sendTextMessage(sender, "There was an error.")
         }
       })
       if (text === 'Generic') {
@@ -81,14 +81,11 @@ function sendGenericMessage (sender) {
           'image_url': 'http://messengerdemo.parseapp.com/img/rift.png',
           'buttons': [{
             'type': 'web_url',
-            'url': 'https://kmutnbeventadmin.firebaseapp.com/',
-            'title': 'web view',
+            'url': 'https://kmutnbeventadmin.firebaseapp.com',
+            'title': 'hi',
             'webview_height_ratio': 'compact',
-            'messenger_extensions': true
-          }, {
-            'type': 'postback',
-            'title': 'Postback',
-            'payload': 'Payload for first element in a generic bubble'
+            'messenger_extensions': true,
+            'fallback_url': 'https://kmutnbeventadmin.firebaseapp.com/fallback'
           }]
         }, {
           'title': 'Second card',
