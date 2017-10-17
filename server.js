@@ -72,11 +72,11 @@ function sendTextMessage (sender, text) {
 function sendGenericMessage (sender) {
   let messageData = {
     'attachment': {
-      'type': '<h1>gg</h1>',
+      'type': 'template',
       'payload': {
         'template_type': 'generic',
         'elements': [{
-          'title': 'First card',
+          'title': '<h1 color="red">gg</h1>',
           'subtitle': 'Element #1 of an hscroll',
           'image_url': 'http://messengerdemo.parseapp.com/img/rift.png',
           'buttons': [{
