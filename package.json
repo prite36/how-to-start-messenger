@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "how to start messenger bot",
   "main": "index.js",
-  "author": "thanawat chookes",
+  "author": "thitiwas prasong",
   "license": "MIT",
   "script": {
     "start": "node server.js"
